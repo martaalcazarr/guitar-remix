@@ -1,5 +1,5 @@
 :root {
-    --primary: #e99401;
+    --primary: #ff6600ff;
     --black: #262626;
     --white: #FFF;
     --main-font: 'Outfit', sans-serif;
@@ -34,3 +34,51 @@
     color: var(--primary);
     margin: 5rem 0;
   }
+
+/* header */
+
+.header {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url(/img/header.jpg);
+  padding: 6rem 0;
+  background-size: cover;
+  background-position: center;
+}
+.logo{
+  width: 25rem;
+}
+
+.bar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .bar{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.navbar{
+  display: flex;
+  gap: 2rem;
+  margin-top: 5rem;
+}
+@media (min-width: 768px) {
+  .navbar{
+    margin-top: 0;
+  }
+}
+.navbar a{
+  color: var(--white);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 1.4rem;
+  padding: .5rem;
+  transition-property: background-color;
+  transition-duration: 300ms;
+
+}
+.navbar a:hover, .active{
+  background-color: var(--primary);
+}
