@@ -1,6 +1,16 @@
 import { useLoaderData } from "@remix-run/react"
 import { getGuitars } from "~/models/guitars.server"
 import Guitar from "~/components/guitar"
+import styles from '~/styles/guitars.css'
+
+export function links(){
+  return[
+    {
+      rel: 'stylesheet',
+      href: styles
+    }
+  ]
+}
 
 //para traer las imagenes
 export async function loader(){
