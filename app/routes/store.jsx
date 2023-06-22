@@ -2,7 +2,14 @@ import { useLoaderData } from "@remix-run/react"
 import { getGuitars } from "~/models/guitars.server"
 import Guitar from "~/components/guitar"
 import styles from '~/styles/guitars.css'
-
+export function meta({data}){
+  return[
+  {
+    title: `Store - Guitar Studio`,
+    description: `Guitars, guitar store, guitar courses`
+  }
+]
+}
 export function links(){
   return[
     {
