@@ -1,6 +1,16 @@
 import { useLoaderData } from "@remix-run/react"
 import { getGuitars } from "~/models/guitars.server"
 import Guitar from "~/components/guitar"
+import styles from '~/styles/guitars.css'
+
+export function links(){
+  return[
+    {
+      rel: 'stylesheet',
+      href: styles
+    }
+  ]
+}
 
 //para traer las imagenes
 export async function loader(){
@@ -11,7 +21,7 @@ export async function loader(){
 const Store = () => {
 
   const guitars = useLoaderData()
- console.log(guitars)
+
   return (
     <main className="container">
       <h2 className="heading">
