@@ -18,7 +18,8 @@ export function links(){
 export function meta(){
     return[
         {
-            title: 'Guitar Studio - About us'
+            title: 'About us - Guitar Studio ',
+            description: `Guitars, guitar store, guitar courses`
         }
     ]
 }
