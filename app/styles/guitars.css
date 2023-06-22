@@ -18,6 +18,8 @@
     grid-template-columns: 1fr 2fr;
     gap: 1rem;
     align-items: center;
+    max-width: 70rem;
+    margin: 0 auto;
 }
 
 .guitar .content{
