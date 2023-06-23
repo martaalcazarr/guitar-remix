@@ -1,7 +1,25 @@
 import { getPost } from "~/models/post.server"
 import { useLoaderData, useRouteError, isRouteErrorResponse, Link } from "@remix-run/react"
 import styles from '~/styles/blog.css'
+import { formatDate } from "~/utils/helpers";
 
+export function meta({data}){
+    if(!data  || Object.keys(data).length=== 0){
+      return[
+        {
+          title: `Post not found - Guitar Studio`,
+          description: `Guitars, guitar store, guitar courses, guitar not found `
+        }
+      ]
+    }else{  
+      return[
+      {
+        title: `${data.data[0].attributes.title} - Guitar Studio`,
+        description: `Guitars, guitar store, guitar courses, guitar: ${data.data[0].attributes.title} `
+      }
+    ]} 
+  
+  }
 export async function loader({params}){
     const {postUrl} = params
     const post = await getPost(postUrl)
@@ -23,7 +41,7 @@ export function ErrorBoundary(){
             // <Document>
                 <p className='error'>
                     {error.status} {error.statusText}
-                    <Link className="error-link" to='/store'>Return to the store</Link>
+                    <Link className="error-link" to='/blog'>Return to the blog</Link>
                 </p>
             // </Document>
         )
@@ -43,9 +61,18 @@ const Post = () => {
 
     const post = useLoaderData()
     console.log(post)
-    const {title} = post.data[0].attributes
+    const {title, content, image, publishedAt} = post.data[0].attributes
     return(
-        <div>{title}</div>
+       <article className="container post mt-3">
+        <img src={"http://127.0.0.1:1337" + image.data.attributes.url} alt="" />
+        <div className="content">
+          <h3>{title}</h3>
+          <p className="date">{formatDate(publishedAt)}
+          </p>
+          <p className="text">{content}</p>
+          <Link className="link" to={`/blog`}>Return to blog</Link>
+        </div>
+       </article>
     )
 }
 
