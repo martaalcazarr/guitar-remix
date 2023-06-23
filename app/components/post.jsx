@@ -4,6 +4,7 @@ import { formatDate } from "~/utils/helpers";
 export default function Post({post}){
     const {attributes} = post
     console.log(post)
+    console.log(attributes.url)
     return (
       <article className="post">
         <img src={"http://127.0.0.1:1337" + attributes.image.data.attributes.url} alt="" />
@@ -12,7 +13,7 @@ export default function Post({post}){
           <p className="date">{formatDate(attributes.publishedAt)}
           </p>
           <p className="resume">{attributes.content}</p>
-          <Link className="link" to={`/posts/${attributes.url}`}>Read post</Link>
+          <Link className="link" to={`/post/${attributes.url}`}>Read post</Link>
         </div>
       </article>
         // <div>
