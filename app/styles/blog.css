@@ -13,6 +13,10 @@
         grid-template-columns: repeat(3, 1fr);
     }
 }
+.post{
+    max-width: 80rem;
+    margin: 0 auto;
+}
 .post .content{
     padding: 1.5rem;
     display: flex;
@@ -46,4 +50,10 @@
 }
 .post .link:hover{
     background-color: var(--primary);
+}
+.post .text{
+    white-space: pre-wrap;
+}
+.mt-3{
+    margin-top: 3rem;
 }
