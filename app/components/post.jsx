@@ -3,8 +3,8 @@ import { formatDate } from "~/utils/helpers";
 
 export default function Post({post}){
     const {attributes} = post
-    console.log(post)
-    console.log(attributes.url)
+
+    
     return (
       <article className="post">
         <img src={"http://127.0.0.1:1337" + attributes.image.data.attributes.url} alt="" />

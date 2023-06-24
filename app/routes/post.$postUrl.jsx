@@ -60,7 +60,6 @@ export function ErrorBoundary(){
 const Post = () => {
 
     const post = useLoaderData()
-    console.log(post)
     const {title, content, image, publishedAt} = post.data[0].attributes
     return(
        <article className="container post mt-3">

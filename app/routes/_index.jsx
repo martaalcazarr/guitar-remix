@@ -1,10 +1,13 @@
 import { useLoaderData } from "@remix-run/react"
 import { getGuitars } from "~/models/guitars.server"
 import { getPosts } from "~/models/post.server"
+import { getCourse } from "~/models/course.server"
 import GuitarsList from "~/components/guitars-list"
 import PostsList from "~/components/posts-list"
+import Course from "~/components/course"
 import stylesGuitars from '~/styles/guitars.css'
 import stylesPosts from '~/styles/blog.css'
+import stylesCourse from '~/styles/course.css'
 
 export function meta(){
 
@@ -19,24 +22,31 @@ export function links(){
     {
       rel: 'stylesheet',
       href: stylesPosts
+    },
+    {
+      rel: 'stylesheet',
+      href: stylesCourse
     }
   ]
 }
 
 export async function loader(){
-  const [guitars, posts] = await Promise.all([
+  const [guitars, posts, course] = await Promise.all([
     getGuitars(),
-    getPosts()
+    getPosts(),
+    getCourse()
+    
   ])
-  
+  console.log(course)
   return {
     guitars: guitars.data,
-    posts: posts.data
+    posts: posts.data,
+    course: course.data
   }
 }
 
 const Index = () => {
-  const {guitars, posts} = useLoaderData()
+  const {guitars, posts, course} = useLoaderData()
  
   return (
     <>
@@ -46,11 +56,17 @@ const Index = () => {
       />
     </main>
 
+    <Course
+      course={course.attributes}
+      />
+
     <section className="container">
       <PostsList
       posts={posts}
       />
     </section>
+
+   
     </>
   )
 }
