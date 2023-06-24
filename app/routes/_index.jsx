@@ -55,10 +55,10 @@ const Index = () => {
       guitars={guitars}
       />
     </main>
-
+{/* 
     <Course
       course={course.attributes}
-      />
+      /> */}
 
     <section className="container">
       <PostsList

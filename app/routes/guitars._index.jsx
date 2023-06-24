@@ -1,4 +1,4 @@
-import { useLoaderData } from "@remix-run/react"
+import { useLoaderData, Outlet } from "@remix-run/react"
 import { getGuitars } from "~/models/guitars.server"
 import GuitarsList from "~/components/guitars-list"
 import styles from '~/styles/guitars.css'
@@ -19,7 +19,6 @@ export function links(){
   ]
 }
 
-//para traer las imagenes
 export async function loader(){
  const guitars = await getGuitars()
  return guitars.data
@@ -27,13 +26,13 @@ export async function loader(){
 
 const Store = () => {
 
-  const guitars = useLoaderData()
+//   const guitars = useLoaderData()
 
   return (
     <main className="container">
-      <GuitarsList
+      {/* <GuitarsList
       guitars={guitars}
-      />
+      /> */}
     </main>
   )
 }
