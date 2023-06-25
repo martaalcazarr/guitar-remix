@@ -35,14 +35,14 @@ export function meta({data}){
 
 }
 
-export function links(){
-  return[
-    {
-      rel: 'stylesheet',
-      href: styles
-    }
-  ]
-}
+// export function links(){
+//   return[
+//     {
+//       rel: 'stylesheet',
+//       href: styles
+//     }
+//   ]
+// }
 
 export async function loader({request, params}){
     const {guitarUrl} = params
@@ -60,7 +60,7 @@ const Guitar = () => {
   const guitar = useLoaderData()
   const {name, description, imagen, price} = guitar.data[0].attributes
     return (
-      <main className="container guitar">
+      <div className="guitar">
         
         
         <img className="image" src={"http://127.0.0.1:1337" + imagen.data.attributes.formats.medium.url} />
@@ -69,7 +69,8 @@ const Guitar = () => {
           <p className="text">{description}</p>
           <p className="price">{price} CLP</p>
         </div>
-      </main>
+        <Link className="link" to='/guitars'>Back to the store</Link>
+      </div>
     )
   }
   
