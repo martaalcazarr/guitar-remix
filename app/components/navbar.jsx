@@ -15,7 +15,7 @@ const Navbar = () => {
     <Link to="/guitars" className={location.pathname === '/guitars' ? 'active' : ''}>
         Store
     </Link>
-    <Link to="/blog" className={location.pathname === '/blog' ? 'active' : ''}>
+    <Link to="/post" className={location.pathname === '/post' ? 'active' : ''}>
         Blog
     </Link>
 </nav>
