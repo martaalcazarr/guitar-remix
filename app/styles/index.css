@@ -60,6 +60,7 @@
 }
 .header .navbar{
   display: flex;
+  align-items: center;
   gap: 2rem;
   margin-top: 5rem;
 }
@@ -67,6 +68,9 @@
   .header .navbar{
     margin-top: 0;
   }
+}
+.header .navbar img{
+  width: 3rem;
 }
 .header .navbar a{
   color: var(--white);
@@ -105,6 +109,9 @@
     flex-direction: row;
     gap: 2rem;
   }
+}
+.footer .navbar a:last-of-type{
+  display: none;
 }
 .footer .navbar a,.footer .copyright{
   color: var(--white);
