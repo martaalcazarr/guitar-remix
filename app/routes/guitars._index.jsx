@@ -19,6 +19,7 @@ export function links(){
   ]
 }
 
+//para traer las imagenes
 export async function loader(){
  const guitars = await getGuitars()
  return guitars.data
@@ -26,13 +27,14 @@ export async function loader(){
 
 const Store = () => {
 
-//   const guitars = useLoaderData()
+  const guitars = useLoaderData()
 
   return (
     <main className="container">
-      {/* <GuitarsList
+      <GuitarsList
       guitars={guitars}
-      /> */}
+      />
+      <Outlet/>
     </main>
   )
 }

@@ -1,6 +1,6 @@
 import { useLoaderData, Outlet } from "@remix-run/react"
 import { getGuitars } from "~/models/guitars.server"
-import GuitarsList from "~/components/guitars-list"
+// import GuitarsList from "~/components/guitars-list"
 import styles from '~/styles/guitars.css'
 // export function meta({data}){
 //   return[
@@ -27,13 +27,13 @@ export async function loader(){
 
 const Store = () => {
 
-  const guitars = useLoaderData()
+  // const guitars = useLoaderData()
 
   return (
     <main className="container">
-      <GuitarsList
+      {/* <GuitarsList
       guitars={guitars}
-      />
+      /> */}
       <Outlet/>
     </main>
   )
