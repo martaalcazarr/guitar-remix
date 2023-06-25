@@ -12,7 +12,7 @@ const Navbar = () => {
     <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>
         About us
     </Link>
-    <Link to="/store" className={location.pathname === '/store' ? 'active' : ''}>
+    <Link to="/guitars" className={location.pathname === '/guitars' ? 'active' : ''}>
         Store
     </Link>
     <Link to="/blog" className={location.pathname === '/blog' ? 'active' : ''}>
