@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useLoaderData, useRouteError, isRouteErrorResponse, Link } from "@remix-run/react"
+import { useLoaderData, useOutletContext, useRouteError, isRouteErrorResponse, Link } from "@remix-run/react"
 import { getGuitar } from "~/models/guitars.server"
 // import styles from '~/styles/guitars.css'
 
@@ -59,9 +59,29 @@ export async function loader({request, params}){
 
 const Guitar = () => {
 
+  const data = useOutletContext()
+  console.log(data)
   const [ quantity, setQuantity] = useState(0)
   const guitar = useLoaderData()
   const {name, description, imagen, price} = guitar.data[0].attributes
+
+  const handleSubmit = e =>{
+    e.preventDefault();
+
+    if(quantity <  1){
+      alert('You must select a quantity')
+      return
+    }
+
+    const selectedGuitar = {
+      id: guitar.data[0].id,
+      image: imagen.data.attributes.formats.medium.url,
+      name,
+      price,
+      quantity
+    }
+    console.log(selectedGuitar)
+  }
     return (
       <div className="guitar">
         
@@ -72,10 +92,10 @@ const Guitar = () => {
           <p className="text">{description}</p>
           <p className="price">{price} CLP</p>
 
-          <form className="form">
+          <form onSubmit={handleSubmit} className="form">
             <label htmlFor="quantity">Quantity</label>
             <select onChange={e => setQuantity(parseInt(e.target.value))} name="quantity" id="quantity">
-              <option value="">-- Select --</option>
+              <option value="0">-- Select --</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
