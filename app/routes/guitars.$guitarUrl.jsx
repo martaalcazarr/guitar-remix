@@ -1,6 +1,7 @@
-import { useLoaderData, useRouteError, isRouteErrorResponse, Link } from "@remix-run/react"
+import { useState } from "react"
+import { useLoaderData, useOutletContext, useRouteError, isRouteErrorResponse, Link } from "@remix-run/react"
 import { getGuitar } from "~/models/guitars.server"
-import styles from '~/styles/guitars.css'
+// import styles from '~/styles/guitars.css'
 
 /**Manejo de errores */
 export function ErrorBoundary(){
@@ -57,8 +58,29 @@ export async function loader({request, params}){
 }
 
 const Guitar = () => {
+
+  const {addCart} = useOutletContext()
+  const [ quantity, setQuantity] = useState(0)
   const guitar = useLoaderData()
   const {name, description, imagen, price} = guitar.data[0].attributes
+
+  const handleSubmit = e =>{
+    e.preventDefault();
+
+    if(quantity <  1){
+      alert('You must select a quantity')
+      return
+    }
+
+    const selectedGuitar = {
+      id: guitar.data[0].id,
+      image: imagen.data.attributes.formats.medium.url,
+      name,
+      price,
+      quantity
+    }
+    addCart(selectedGuitar)
+  }
     return (
       <div className="guitar">
         
@@ -68,6 +90,21 @@ const Guitar = () => {
           <h3>{name}</h3>
           <p className="text">{description}</p>
           <p className="price">{price} CLP</p>
+
+          <form onSubmit={handleSubmit} className="form">
+            <label htmlFor="quantity">Quantity</label>
+            <select onChange={e => setQuantity(parseInt(e.target.value))} name="quantity" id="quantity">
+              <option value="0">-- Select --</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+
+            </select>
+            <input type="submit"
+            value="Add to cart" />
+          </form>
         </div>
         <Link className="link" to='/guitars'>Back to the store</Link>
       </div>

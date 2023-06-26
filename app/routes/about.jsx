@@ -25,6 +25,7 @@ export function meta(){
 }
 
 const About = () => {
+
   return (
     <main className="container about-us">
       <h2 className="heading">
