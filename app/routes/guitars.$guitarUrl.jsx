@@ -1,6 +1,7 @@
+import { useState } from "react"
 import { useLoaderData, useRouteError, isRouteErrorResponse, Link } from "@remix-run/react"
 import { getGuitar } from "~/models/guitars.server"
-import styles from '~/styles/guitars.css'
+// import styles from '~/styles/guitars.css'
 
 /**Manejo de errores */
 export function ErrorBoundary(){
@@ -57,6 +58,8 @@ export async function loader({request, params}){
 }
 
 const Guitar = () => {
+
+  const [ quantity, setQuantity] = useState(0)
   const guitar = useLoaderData()
   const {name, description, imagen, price} = guitar.data[0].attributes
     return (
@@ -71,7 +74,7 @@ const Guitar = () => {
 
           <form className="form">
             <label htmlFor="quantity">Quantity</label>
-            <select name="quantity" id="quantity">
+            <select onChange={e => setQuantity(parseInt(e.target.value))} name="quantity" id="quantity">
               <option value="">-- Select --</option>
               <option value="1">1</option>
               <option value="2">2</option>
