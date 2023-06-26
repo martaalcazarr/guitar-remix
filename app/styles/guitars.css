@@ -61,3 +61,30 @@
 .guitar .link:hover{
     background-color: var(--primary);
 }
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.form label{
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+.form select{
+    text-align: center;
+    padding: 1rem;
+    border: 1px solid var(--black);
+}
+.form input[type="submit"]{
+    margin-top: 3rem;
+    color: var(--white);
+    text-transform: uppercase;
+    padding: 1.4rem;
+    font-weight: 700;
+    border:none;
+    transition-property: background-color;
+    transition-duration: 3ms;
+}
+.form input[type="submit"]:hover{
+    background-color: var(--primary);
+    cursor: pointer;
+}

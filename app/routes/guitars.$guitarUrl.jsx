@@ -68,6 +68,21 @@ const Guitar = () => {
           <h3>{name}</h3>
           <p className="text">{description}</p>
           <p className="price">{price} CLP</p>
+
+          <form className="form">
+            <label htmlFor="quantity">Quantity</label>
+            <select name="quantity" id="quantity">
+              <option value="">-- Select --</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+
+            </select>
+            <input type="submit"
+            value="Add to cart" />
+          </form>
         </div>
         <Link className="link" to='/guitars'>Back to the store</Link>
       </div>
