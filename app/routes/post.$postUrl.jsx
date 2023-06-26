@@ -41,7 +41,7 @@ export function ErrorBoundary(){
             // <Document>
                 <p className='error'>
                     {error.status} {error.statusText}
-                    <Link className="error-link" to='/blog'>Return to the blog</Link>
+                    <Link className="error-link" to='/post'>Return to the blog</Link>
                 </p>
             // </Document>
         )
@@ -62,14 +62,14 @@ const Post = () => {
     const post = useLoaderData()
     const {title, content, image, publishedAt} = post.data[0].attributes
     return(
-       <article className="container post mt-3">
+       <article className="post mt-3">
         <img src={"http://127.0.0.1:1337" + image.data.attributes.url} alt="" />
         <div className="content">
           <h3>{title}</h3>
           <p className="date">{formatDate(publishedAt)}
           </p>
           <p className="text">{content}</p>
-          <Link className="link" to={`/blog`}>Return to blog</Link>
+          <Link className="link" to={`/post`}>Return to blog</Link>
         </div>
        </article>
     )

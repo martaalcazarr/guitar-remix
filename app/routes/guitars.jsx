@@ -1,4 +1,4 @@
-import { useLoaderData, Outlet } from "@remix-run/react"
+import { Outlet } from "@remix-run/react"
 import { getGuitars } from "~/models/guitars.server"
 // import GuitarsList from "~/components/guitars-list"
 import styles from '~/styles/guitars.css'

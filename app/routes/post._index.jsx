@@ -1,16 +1,16 @@
 import { useLoaderData } from "@remix-run/react"
 import PostsList from "~/components/posts-list"
 import { getPosts } from "~/models/post.server"
-import styles from '~/styles/blog.css'
+// import styles from '~/styles/blog.css'
 
-export function links(){
-  return[
-    {
-      rel: 'stylesheet',
-      href: styles
-    }
-  ]
-}
+// export function links(){
+//   return[
+//     {
+//       rel: 'stylesheet',
+//       href: styles
+//     }
+//   ]
+// }
 
 export function meta({data}){
   return[
@@ -31,11 +31,11 @@ const Blog = () => {
   const posts = useLoaderData()
   return (
     
-    <main className="container">
+    
       <PostsList
       posts={posts}
       />
-    </main>
+   
   )
 }
 
