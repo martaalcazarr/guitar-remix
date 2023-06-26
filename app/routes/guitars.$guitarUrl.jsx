@@ -59,8 +59,7 @@ export async function loader({request, params}){
 
 const Guitar = () => {
 
-  const data = useOutletContext()
-  console.log(data)
+  const {addCart} = useOutletContext()
   const [ quantity, setQuantity] = useState(0)
   const guitar = useLoaderData()
   const {name, description, imagen, price} = guitar.data[0].attributes
@@ -80,7 +79,7 @@ const Guitar = () => {
       price,
       quantity
     }
-    console.log(selectedGuitar)
+    addCart(selectedGuitar)
   }
     return (
       <div className="guitar">
