@@ -72,13 +72,24 @@ export default function App(){
             setShoppingCart([...shoppingCart, guitar])
         }
     }
+
+    const updateQuantity = guitar => {
+        const updatedCart = shoppingCart.map(guitarState => {
+           if(guitarState.id === guitar.id){
+            guitarState.quantity = guitar.quantity
+           }
+           return guitarState
+        })
+        setShoppingCart(updatedCart)
+    }
     return(
         
         <Document>
             <Outlet
             context={{
                 addCart,
-                shoppingCart
+                shoppingCart,
+                updateQuantity
             }} />
         </Document>
     )
