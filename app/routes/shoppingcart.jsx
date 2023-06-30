@@ -20,8 +20,14 @@ export function meta({ data }) {
   ];
 }
 function ShoppingCart() {
+    const [total, setTotal] = useState(0)
   const { shoppingCart, updateQuantity } = useOutletContext();
-  console.log(shoppingCart);
+  
+  useEffect(() => {
+    const calculateTotal = shoppingCart.reduce((total, product) => total + (product.quantity * product.price), 0)
+    setTotal(calculateTotal)
+  }, [shoppingCart])
+
   return (
     <main className="container">
       <h1 className="heading">Shopping Cart</h1>
@@ -70,7 +76,7 @@ function ShoppingCart() {
       </div>
       <aside className="resume">
         <p>Your order</p>
-        <p>Total: CLP</p>
+        <p>Total: {total} CLP</p>
       </aside>
     </main>
   );
