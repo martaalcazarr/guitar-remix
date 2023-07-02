@@ -21,7 +21,7 @@ export function meta({ data }) {
 }
 function ShoppingCart() {
     const [total, setTotal] = useState(0)
-  const { shoppingCart, updateQuantity } = useOutletContext();
+  const { shoppingCart, updateQuantity, deleteGuitar } = useOutletContext();
   
   useEffect(() => {
     const calculateTotal = shoppingCart.reduce((total, product) => total + (product.quantity * product.price), 0)
@@ -53,7 +53,7 @@ function ShoppingCart() {
                         onChange={e => updateQuantity({
                         quantity: +e.target.value,
                         id: product.id
-                    })} name="quantity" id="quantity">
+                        })} name="quantity" id="quantity">
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -70,6 +70,11 @@ function ShoppingCart() {
                       CLP
                     </p>
                   </div>
+                  <button
+                    type="button"
+                    className="btn-delete"
+                    onClick={() => deleteGuitar(product.id)}
+                  >X</button>
                 </div>
               ))}
         </div>
