@@ -82,6 +82,12 @@ export default function App(){
         })
         setShoppingCart(updatedCart)
     }
+
+    const deleteGuitar = id => {
+        const updatedCart = shoppingCart.filter(guitarState => guitarState.id !== id)
+            setShoppingCart(updatedCart)
+        
+    }
     return(
         
         <Document>
@@ -89,7 +95,8 @@ export default function App(){
             context={{
                 addCart,
                 shoppingCart,
-                updateQuantity
+                updateQuantity,
+                deleteGuitar
             }} />
         </Document>
     )
