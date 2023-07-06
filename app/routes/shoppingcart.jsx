@@ -34,9 +34,9 @@ function ShoppingCart() {
       <div className="content">
         <div className="cart">
           <h2>Articles</h2>
-          {shoppingCart.length === 0
+          {shoppingCart?.length === 0
             ? "Your shopping cart is empty"
-            : shoppingCart.map((product) => (
+            : shoppingCart?.map((product) => (
                 <div key={product.id} className="product">
                   <div>
                     <img
