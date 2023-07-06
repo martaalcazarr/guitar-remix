@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
     Meta,
     Links,
@@ -51,7 +51,13 @@ export function links(){
 
 export default function App(){
 
-    const [shoppingCart, setShoppingCart] = useState([])
+    //si es del servidor, que no haga nada, pero si es del cliente que haga json.parse
+    const shoppingCartLS = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('shoppingCart')) ?? [] : null
+    const [shoppingCart, setShoppingCart] = useState(shoppingCartLS)
+
+    useEffect(() =>{
+        localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart))
+    }, [shoppingCart])
 
     const addCart = guitar =>{
         // setShoppingCart([...shoppingCart, guitar])

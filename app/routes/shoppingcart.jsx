@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useOutletContext } from "@remix-run/react";
+import { ClientOnly } from "remix-utils";
 import styles from "~/styles/shoppingcart.css";
 
 export function links() {
@@ -29,14 +30,16 @@ function ShoppingCart() {
   }, [shoppingCart])
 
   return (
+    <ClientOnly fallback={'Loading...'}>
+      {() =>(
     <main className="container">
       <h1 className="heading">Shopping Cart</h1>
       <div className="content">
         <div className="cart">
           <h2>Articles</h2>
-          {shoppingCart.length === 0
+          {shoppingCart?.length === 0
             ? "Your shopping cart is empty"
-            : shoppingCart.map((product) => (
+            : shoppingCart?.map((product) => (
                 <div key={product.id} className="product">
                   <div>
                     <img
@@ -84,6 +87,8 @@ function ShoppingCart() {
         <p>Total: {total} CLP</p>
       </aside>
     </main>
+    )}
+    </ClientOnly>
   );
 }
 
